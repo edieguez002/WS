@@ -106,13 +106,14 @@ function balioakEgiaztatu(){
 	if(tlfEgiaztatu()==false){
 		return false;
 	}
+	ikusBalioak();
 	return true;
 }
 </script>
 </head>
 <body>
 <h1>Sign up</h1>
-<form id="erregistro" name="erregistro" onSubmit="ikusBalioak()" method="POST" action="igorriSignUp.php" return balioakEgiaztatu()>
+<form id="erregistro" name="erregistro" onsubmit="return balioakEgiaztatu()" action="igorriSignUp.php" method="post">
 
 Izena(*):<br>
 <input type="text" id="Izena" name="Izena">
@@ -142,7 +143,7 @@ Interesa duzun teknologiak:
 <br>
 <textarea name="Teknologiak" id="Teknologiak" cols="30" rows="10"></textarea>
 <br><br>
-<button type="button" onclick="balioakEgiaztatu()">Submit</button>
+<input type="submit" id="submit" value="submit"/>
 <button onclick="history.back()">Atzera</button>
 </form>
 </body>
