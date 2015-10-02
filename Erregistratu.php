@@ -13,7 +13,7 @@ if (!$conn) {
     die("Konexio errorea egon da: " . mysql_connect_error());
 }
 mysql_select_db("u803652676_quiz") or die(mysql_error());
-$sql = "INSERT INTO Erabiltzaile (Izena, Abizena, Eposta, Pasahitza, Telefonoa, Informatika, Teknologiak) VALUES ('$Izena', '$Abizena', '$Eposta', '$Pasahitza', '$Telefonoa', '$Informatika', '$Teknologiak')";
+$sql = "INSERT INTO erabiltzaile (Izena, Abizena, Eposta, Pasahitza, Telefonoa, Informatika, Teknologiak) VALUES ('$Izena', '$Abizena', '$Eposta', '$Pasahitza', '$Telefonoa', '$Informatika', '$Teknologiak')";
 
 if (mysql_query($sql)) {
     echo "Ondo txertatu da!";
