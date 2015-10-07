@@ -52,8 +52,6 @@ function abizenaEgiaztatu(){
 <script language="javascript">
 function epostaEgiaztatu(){
 	var eposta= document.getElementById("Eposta").value;
-	exp=new RegExp(\^[a-z]*[0-9]{3}\@ikasle\.ehu(\.es|\.eus)$);
-	
 	if((/[a-zA-Z]+[0-9]{3}@ikasle.ehu.es$/.test(eposta)) || (/[a-zA-Z]+[0-9]{3}@ikasle.ehu.eus$/.test(eposta))){
 		
 		return true;
