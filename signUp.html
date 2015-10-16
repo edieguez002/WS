@@ -52,11 +52,11 @@ function abizenaEgiaztatu(){
 <script language="javascript">
 function epostaEgiaztatu(){
 	var eposta= document.getElementById("Eposta").value;
-	if((/[a-zA-Z]+[0-9]{3}@ikasle.ehu.es$/.test(eposta)) || (/[a-zA-Z]+[0-9]{3}@ikasle.ehu.eus$/.test(eposta))){
+	if((/[a-zA-Z]+[0-9]{3}@ikasle(\.e)hu.es$/.test(eposta)) || (/[a-zA-Z]+[0-9]{3}@ikasle(\.e)hu.eus$/.test(eposta))){
 		
 		return true;
 	}else{
-			alert("Epostaren egitura: Hizkiak + 3 digitu + @ikasle.ehu. eus edo es");
+			//alert("Epostaren egitura: Hizkiak + 3 digitu + @ikasle.ehu. eus edo es");
 			return false;
 		}
 }
