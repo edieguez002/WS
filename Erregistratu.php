@@ -7,9 +7,10 @@ $Telefonoa = $_POST['Telefonoa'];
 $Informatika = $_POST['Informatika'];
 $Teknologiak = $_POST['Teknologiak'];
 
-if(!filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/[a-zA-Z]+[0-9]{3}@ikasle(\.e)hu.es$/"))) || !filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/[a-zA-Z]+[0-9]{3}@ikasle(\.e)hu.eus$/")))){
+if(!filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/[a-zA-Z]+[0-9]{3}@ikasle(\.e)hu.es/"))) && !filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>"/[a-zA-Z]+[0-9]{3}@ikasle(\.e)hu.eus/")))){
+	
 	echo"<script language='javascript'>alert('$Eposta gaizki sartu duzu.')</script>";
-	header("location: signUp.html");
+	
 }else{
 	$conn=mysql_connect("mysql.hostinger.es", "u803652676_aieko", "enetor");
 

@@ -29,15 +29,18 @@ $Pasahitza = $_REQUEST['Pasahitza'];
 } else {
 $Pasahitza = "";
 }
-//$Eposta= $_POST["Eposta"];
-//$Pasahitza= $_POST["Pasahitza"];
+
+$regexp1="/[a-zA-Z]+[0-9]{3}@ikasle(\.e)hu.es/";
+$regexp2="/[a-zA-Z]+[0-9]{3}@ikasle(\.e)hu.eus/";
 
 if(!$Eposta || !$Pasahitza){
 	echo 'Eposta eta pasahitza sartu behar dituzu.';
 }
 else{
-
-	$conn=mysql_connect("localhost", "root", "");
+	if(!filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$regexp1))) && !filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$regexp2)))){
+		echo"<script language='javascript'>alert('$Eposta gaizki sartu duzu.')</script>";
+	}else{
+		$conn=mysql_connect("mysql.hostinger.es", "u803652676_aieko", "enetor");
 
 		if (!$conn) {
 			die("Konexio errorea egon da: " . mysql_connect_error());
@@ -48,20 +51,23 @@ else{
 	
 			for($i=0; $i<mysql_num_rows($emaitza); $i++){
 				$row= mysql_fetch_assoc($emaitza);
+				
 				if(($row['Eposta']==$Eposta) && ($row['Pasahitza']!=$Pasahitza)){
 					echo 'Pasahitza okerra.';
-					//header("Location: logeatu.html");
+					break;
+
 				}
 				if(($row['Eposta']==$Eposta) && ($row['Pasahitza']==$Pasahitza)){
 					mysql_close($conn);
 					echo "<p> <a href='Quizzes.html'> Galdetegia </a>";
+					break;
+				}
+				else{
+					echo 'Ez dago horrelako erabiltzailerik. ';
+					die('Ezin izan da informaziorik lortu. ' . mysql_error());
 				}
 			}
-			if(mysql_num_rows($emaitza)==0){
-				echo 'Ez dago horrelako erabiltzailerik.';
-				//header("Location: logeatu.html");
-				die('Ezin izan da informaziorik lortu. ' . mysql_error());
-			}
+		}
 		
 	}
 
