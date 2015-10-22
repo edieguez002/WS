@@ -46,7 +46,7 @@ else{
 			die("Konexio errorea egon da: " . mysql_connect_error());
 		}
 	
-		mysql_select_db("quiz") or die(mysql_error());
+		mysql_select_db("u803652676_quiz") or die(mysql_error());
 		$emaitza= mysql_query("SELECT * FROM erabiltzaile");
 	
 			for($i=0; $i<mysql_num_rows($emaitza); $i++){
