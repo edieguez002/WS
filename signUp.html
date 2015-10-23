@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>signUp</title>
+<script type="text/javascript">
+function ikusBalioak(){
+	var sAux="";
+	var frm=document.getElementById("erregistro");
+	for(i=0;i<frm.elements.length-2;i++){
+		
+		if (frm.elements[i].name=="Informatika"){
+			
+			if(frm.elements[i].checked==true){
+				sAux +="IZENA:" + frm.elements[i].name+"";
+				sAux +="BALIOA:" + frm.elements[i].value+"\n";	
+			}
+		}else{
+			sAux +="IZENA:" + frm.elements[i].name+"";
+			sAux +="BALIOA:" + frm.elements[i].value+"\n";
+		}
+	}
+	alert(sAux);
+}
+
+</script>
+
+<script language="javascript">
+function izenaEgiaztatu(){
+	var izena= document.getElementById("Izena").value;
+	
+	if(izena.length==0){
+		alert("Izena derrigorrezkoa da.");
+		return false;
+	}
+	return true;
+}
+</script>
+
+<script language="javascript">
+function abizenaEgiaztatu(){
+	var abizena= document.getElementById("Abizena").value;
+	
+	if(abizena.length==0){
+		alert("Abizena derrigorrezkoa da.");
+		return false;
+	}
+	return true;
+}
+</script>
+
+<script language="javascript">
+function epostaEgiaztatu(){
+	var eposta= document.getElementById("Eposta").value;
+	if((/[a-zA-Z]+[0-9]{3}@ikasle(\.e)hu.es$/.test(eposta)) || (/[a-zA-Z]+[0-9]{3}@ikasle(\.e)hu.eus$/.test(eposta))){
+		
+		return true;
+	}else{
+			alert("Epostaren egitura: Hizkiak + 3 digitu + @ikasle.ehu. eus edo es");
+			return false;
+		}
+}
+</script>
+
+<script language="javascript">
+function pasahitzaEgiaztatu(){
+	var pasahitza= document.getElementById("Pasahitza").value;
+	
+	if(pasahitza.length<6){
+		alert("Pasahitzak 6 karaktere baino gehiago eduki behar ditu.");
+		return false;
+	}
+	return true;
+}
+</script>
+
+<script language="javascript">
+var pattern=""
+function tlfEgiaztatu(){
+	var tlf= document.getElementById("Telefonoa").value;
+	
+	if(/[0-9]{9}$/.test(tlf)){
+		
+		return true;
+	}else{
+		alert("Telefonoak 9 digitu eduki behar ditu.");
+		return false;
+		}
+	
+}
+</script>
+<script language="javascript">
+function balioakEgiaztatu(){
+	if(izenaEgiaztatu()==false){
+		return false;
+	}
+	if(abizenaEgiaztatu()==false){
+		return false;
+	}
+	if(epostaEgiaztatu()==false){
+		alert("Epostaren egitura: Hizkiak + 3 digitu + @ikasle.ehu. eus edo es");
+		return false;
+	}
+	if(pasahitzaEgiaztatu()==false){
+		return false;
+	}
+	if(tlfEgiaztatu()==false){
+		return false;
+	}
+	return true;
+}
+</script>
+</head>
+<body>
+<h1>Sign up</h1>
+<form id="erregistro" name="erregistro" onsubmit="return balioakEgiaztatu()" action="Erregistratu.php" method="post">
+
+Izena(*):<br>
+<input type="text" id="Izena" name="Izena">
+<br><br>
+Abizena(*):<br>
+<input type="text" id="Abizena" name="Abizena">
+<br><br>
+Eposta(*):<br>
+<input type="text" id="Eposta" name="Eposta">
+<br><br>
+
+Pasahitza(*):<br>
+<input type="password" id="Pasahitza" name="Pasahitza">
+<br><br>
+
+Telefono zenbakia(*):<br>
+<input type="text" id="Telefonoa" name="Telefonoa">
+<br><br>
+
+Espezialitatea(*):<br>
+<input type="radio" value="Software" name="Informatika" id="Software" CHECKED>Software Ingeniaritza<br>
+<input type="radio" value="Konputazio" name="Informatika" id="Konputazio">Konputazioa<br>
+<input type="radio" value="Hardware" name="Informatika" id="Hardware">Konputagailuen Ingeniaritza<br>
+<input type="radio" value="Besterik" name="Informatika" id="Besterik">Besterik<br><br>
+
+Interesa duzun teknologiak:
+<br>
+<textarea name="Teknologiak" id="Teknologiak" cols="30" rows="10"></textarea>
+<br><br>
+<input type="submit" id="submit" value="submit"/>
+<button onclick="history.back()">Atzera</button>
+</form>
+</body>
+</html>
