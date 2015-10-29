@@ -79,7 +79,23 @@ switch(true){
 		$sententzia= "INSERT INTO Galderak (ErabPosta, Galdera, Erantzuna, ZailtasunMaila) VALUES ('$ErabPosta', '$Galdera', '$Erantzuna', '$Zailtasuna')";
 		
 		if (mysql_query($sententzia)) {
-			echo "Ondo txertatu da!";
+			echo "Datu basean ondo txertatu da!";
+			
+			$galderak= simplexml_load_file('galderak.xml');
+			if($galderak == false){
+				echo "Errorea egon da XML fitxategia kargatzerakoan:";
+			}else{
+					$galdera= $galderak->$assessmentItems->$assessmentItem->addChild('galdera');
+					$galdera->addAttribute('complexity', $Zailtasuna);
+					$galdera->addAttribute('subject', 'DEFINITUGABEA');
+					$itemBody=$galdera->addChild('itemBody');
+					$itemBody->addChild('p', $Galdera);
+					$correctResponse=$galdera->addChild('correctResponse');
+					$correctResponse->addChild('value', $Erantzuna);
+					echo $galderak->asXML();
+					echo "Ondo txertatu da XML fitxategian:";
+			}
+			
 		} else {
 			echo "Errorea egon da txertatzerakoan: " . mysql_error($conn);
 		}
@@ -90,5 +106,7 @@ switch(true){
 }
 
 ?>
+<br><br>
+<a href="seeXMLQuestions.php">Galderak ikusi</a>
 </body>
 </html>
