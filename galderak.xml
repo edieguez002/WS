@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <assessmentItems>
 	<assessmentItem complexity="3" subject="Mikologia">
 		<itemBody> 
@@ -14,6 +14,14 @@
 		</itemBody>
 		<correctResponse>
 			<value>Phalloides</value>
+		</correctResponse>
+	</assessmentItem>
+	<assessmentItem complexity="1" subject="DEFINITUGABEA">
+		<itemBody>
+			<p>Zer da google?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Enpresa</value>
 		</correctResponse>
 	</assessmentItem>
 </assessmentItems>

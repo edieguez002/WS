@@ -85,14 +85,14 @@ switch(true){
 			if($galderak == false){
 				echo "Errorea egon da XML fitxategia kargatzerakoan:";
 			}else{
-					$galdera= $galderak->$assessmentItems->$assessmentItem->addChild('galdera');
+					$galdera= $galderak->addChild('assessmentItem');
 					$galdera->addAttribute('complexity', $Zailtasuna);
 					$galdera->addAttribute('subject', 'DEFINITUGABEA');
 					$itemBody=$galdera->addChild('itemBody');
 					$itemBody->addChild('p', $Galdera);
 					$correctResponse=$galdera->addChild('correctResponse');
 					$correctResponse->addChild('value', $Erantzuna);
-					echo $galderak->asXML();
+					echo $galderak->asXML('galderak.xml');
 					echo "Ondo txertatu da XML fitxategian:";
 			}
 			
