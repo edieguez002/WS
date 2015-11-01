@@ -67,13 +67,13 @@ switch(true){
 		break;
 		
 	case (($Galdera && $Erantzuna && $Zailtasuna) || ($Galdera && $Erantzuna && !$Zailtasuna)):
-		$conn=mysql_connect("localhost", "root", "");
+		$conn=mysql_connect("mysql.hostinger.es", "u803652676_aieko", "enetor");
 
 		if (!$conn) {
 			die("Konexio errorea egon da: " . mysql_connect_error());
 		}
 	
-		mysql_select_db("quiz") or die(mysql_error());
+		mysql_select_db("u803652676_quiz") or die(mysql_error());
 		session_start();
 		$ErabPosta= $_SESSION["Eposta"];
 		$sententzia= "INSERT INTO Galderak (ErabPosta, Galdera, Erantzuna, ZailtasunMaila) VALUES ('$ErabPosta', '$Galdera', '$Erantzuna', '$Zailtasuna')";
