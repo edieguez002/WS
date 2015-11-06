@@ -50,7 +50,7 @@ else{
 		$conn=mysql_connect("mysql.hostinger.es", "u803652676_aieko", "enetor");
 
 		if (!$conn) {
-			die("Konexio errorea egon da: " . mysql_connect());
+			die("Konexio errorea egon da: " . mysql_connect_error());
 		}
 	
 		mysql_select_db("u803652676_quiz") or die(mysql_error());
@@ -58,7 +58,7 @@ else{
 	
 			for($i=0; $i<mysql_num_rows($emaitza); $i++){
 				$row= mysql_fetch_assoc($emaitza);
-				
+				echo $row['Eposta'];
 				if(($row['Eposta']==$Eposta) && ($row['Pasahitza']!=$Pasahitza)){
 					echo 'Pasahitza okerra.';
 					break;
@@ -70,8 +70,8 @@ else{
 					$_SESSION["Eposta"]= $Eposta;
 					echo $_SESSION["Eposta"];
 					echo "<p> <a href='InsertQuestion.php'> Galdetegia </a>";
-					echo"<br><br>";
-					echo "<p> <a href='handlingQuizzes.php'> Galdetegi berria </a>";
+					echo "<br><br>";
+					echo "<p> <a href='handlingQuizzes.php'> Galdetegi Berria </a>";
 					break;
 				}
 			}
@@ -80,6 +80,7 @@ else{
 				die('Ezin izan da informaziorik lortu. ' . mysql_error());
 				mysql_close($conn);
 			}
+			
 		}
 		
 	}
