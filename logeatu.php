@@ -79,7 +79,7 @@ else{
 				echo 'Ez dago horrelako erabiltzailerik. ';
 				die('Ezin izan da informaziorik lortu. ' . mysql_error());
 				mysql_close($conn);
-			
+			}
 		}
 		
 	}
