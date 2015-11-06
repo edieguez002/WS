@@ -65,6 +65,7 @@ else{
 
 				}
 				if(($row['Eposta']==$Eposta) && ($row['Pasahitza']==$Pasahitza)){
+					mysql_close($conn);
 					session_start();
 					$_SESSION["Eposta"]= $Eposta;
 					echo $_SESSION["Eposta"];
@@ -73,12 +74,12 @@ else{
 					echo "<p> <a href='handlingQuizzes.php'> Galdetegi berria </a>";
 					break;
 				}
-				else{
-					echo 'Ez dago horrelako erabiltzailerik. ';
-					die('Ezin izan da informaziorik lortu. ' . mysql_error());
-				}
 			}
-			mysql_close($conn);
+			if($i==mysql_num_rows($emaitza)){
+				echo 'Ez dago horrelako erabiltzailerik. ';
+				die('Ezin izan da informaziorik lortu. ' . mysql_error());
+				mysql_close($conn);
+			
 		}
 		
 	}
