@@ -58,7 +58,7 @@ else{
 	
 			for($i=0; $i<mysql_num_rows($emaitza); $i++){
 				$row= mysql_fetch_assoc($emaitza);
-				echo $row['Eposta'];
+				
 				if(($row['Eposta']==$Eposta) && ($row['Pasahitza']!=$Pasahitza)){
 					echo 'Pasahitza okerra.';
 					break;
@@ -68,7 +68,7 @@ else{
 					mysql_close($conn);
 					session_start();
 					$_SESSION["Eposta"]= $Eposta;
-					echo $_SESSION["Eposta"];
+					
 					echo "<p> <a href='InsertQuestion.php'> Galdetegia </a>";
 					echo "<br><br>";
 					echo "<p> <a href='handlingQuizzes.php'> Galdetegi Berria </a>";
@@ -87,5 +87,6 @@ else{
 	
 	
 ?>
+
 </body>
 </html>

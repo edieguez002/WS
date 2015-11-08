@@ -30,8 +30,9 @@ if(!filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>
 	mysql_close($conn);
 	echo "<p> <a href='ikusdatuak.php'> Erregistroak ikusi </a>";
 }
-
-
+echo "<br>";
+echo "<br>";
+echo "<input type='button' value='Atzera' onClick='history.go(-1);'>";
 ?>
 
 

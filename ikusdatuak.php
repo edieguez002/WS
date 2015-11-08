@@ -1,5 +1,5 @@
 <?php
-mysql_connect("mysql.hostinger.es","u803652676_aieko", "enetor") or die(mysql_error());
+mysql_connect("mysql.hostinger.es", "u803652676_aieko", "enetor") or die(mysql_error());
 
 mysql_select_db("u803652676_quiz") or die(mysql_error());
 
@@ -12,4 +12,6 @@ while( $row = mysql_fetch_array( $erabiltzaileak ) ) {
 }
 
 echo '</table>';
-?>
+echo "<br>";
+echo "<br>";
+echo "<input type='button' value='Atzera' onClick='history.go(-1);'>";?>

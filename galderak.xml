@@ -24,4 +24,4 @@
 			<value>Enpresa</value>
 		</correctResponse>
 	</assessmentItem>
-</assessmentItems>
+<assessmentItem complexity="1" subject="DEFINITUGABEA"><itemBody><p>Zein da hipertestuen transferentziarako protokoloa?</p></itemBody><correctResponse><value>http</value></correctResponse></assessmentItem></assessmentItems>

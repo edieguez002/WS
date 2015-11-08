@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <title>Galderak Kudeatu</title>
 <script language = "javascript">
+	
+	
+	
+function galderakIkusi(){
+
 	XMLHttpRequestObject = new XMLHttpRequest();
 	
 	XMLHttpRequestObject.onreadystatechange=function(){
@@ -13,18 +18,28 @@
 	}
 }
 
-function galderakIkusi(){
 	XMLHttpRequestObject.open("GET", "galderakIkusi.php", true);
 	XMLHttpRequestObject.send();
 }
 
 function galderaGorde(){
-	gal= document.getElementById('f').Galdera.value;
-	era= document.getElementById('f').Erantzuna.value;
-	zai= document.getElementById('f').Zailtasuna.value;
-	XMLHttpRequestObject.open("POST", "galderaGorde.php", true);
-	XMLHttpRequestObject.send("galdera="+gal+"&erantzuna="+era+"&zailtasuna"+zai);
+
+XMLHttpRequestObject = new XMLHttpRequest();
+	
+	XMLHttpRequestObject.onreadystatechange=function(){
+	if (XMLHttpRequestObject.readyState==4){	 
+		document.getElementById("galderakGorde").innerHTML= XMLHttpRequestObject.responseText;
+	}
 }
+
+	var gal= document.getElementById("Galdera").value;
+	var era= document.getElementById("Erantzuna").value;
+	var zai= document.getElementById("Zailtasuna").value;
+	XMLHttpRequestObject.open("POST", "galderaGorde.php", true);
+	XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	XMLHttpRequestObject.send("&Galdera="+gal+"&Erantzuna="+era+"&Zailtasuna="+zai);
+}
+
 </script>
 </head>
 <body>
@@ -42,9 +57,15 @@ Zailtasun-maila:<br>
 <input type="button" id="Gorde" name="Gorde" value="Galdera gorde" onClick="galderaGorde()"/>
 <input type="button" id="Ikusi" name="Ikusi" value="Galderak ikusi" onClick="galderakIkusi()"/>
 </form>
+<div id="galderakGorde">
+<p> </p>
+</div>
 <div id="galderakBistaratu">
 <p> </p>
 </div>
+<button onclick="history.back()">Atzera</button>
+
+
 
 <?php
 
