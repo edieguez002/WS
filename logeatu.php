@@ -39,21 +39,22 @@ if (isset($_REQUEST['Pasahitza'])) {
 
 $regexp1="/[a-zA-Z]+[0-9]{3}@ikasle(\.e)hu.es/";
 $regexp2="/[a-zA-Z]+[0-9]{3}@ikasle(\.e)hu.eus/";
+$regexp3="/[a-zA-Z]+[0-9]{3}@ehu(\.e)s/";
 
 if(!$Eposta || !$Pasahitza){
 	echo 'Eposta eta pasahitza sartu behar dituzu.';
 }
 else{
-	if(!filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$regexp1))) && !filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$regexp2)))){
+	if(!filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$regexp1))) && !filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$regexp2))) && !filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$regexp3)))){
 		echo"<script language='javascript'>alert('$Eposta gaizki sartu duzu.')</script>";
 	}else{
-		$conn=mysql_connect("mysql.hostinger.es", "u803652676_aieko", "enetor");
+		$conn=mysql_connect("localhost", "root", "");
 
 		if (!$conn) {
 			die("Konexio errorea egon da: " . mysql_connect_error());
 		}
 	
-		mysql_select_db("u803652676_quiz") or die(mysql_error());
+		mysql_select_db("quiz") or die(mysql_error());
 		$emaitza= mysql_query("SELECT * FROM erabiltzaile");
 	
 			for($i=0; $i<mysql_num_rows($emaitza); $i++){
@@ -68,7 +69,10 @@ else{
 					mysql_close($conn);
 					session_start();
 					$_SESSION["Eposta"]= $Eposta;
-					
+					if(filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$regexp3)))){
+						echo "<p> <a href='adminQuestions.php'> Galderen kudeaketa </a>";
+						break;
+					}
 					echo "<p> <a href='InsertQuestion.php'> Galdetegia </a>";
 					echo "<br><br>";
 					echo "<p> <a href='handlingQuizzes.php'> Galdetegi Berria </a>";

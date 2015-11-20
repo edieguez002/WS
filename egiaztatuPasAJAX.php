@@ -9,9 +9,9 @@ $soapclient= new nusoap_client('http://localhost/wsp/lab7/egiaztatuPasahitza.php
 
 //Web-Service-n inplementatu dugun funtzioari dei egiten diogu
 		$pasahitza=$_POST['Pasahitza'];
+		$pasahitza2=$_POST['Pasahitza2'];
 		$result=$soapclient->call('egiaztatuPas', array('x'=>$pasahitza));
-		echo $result;
-		if($result==='BALIOZKOA'){
+		if($result==='BALIOZKOA' && $pasahitza==$pasahitza2){
 			echo "Pasahitza egokia";
 		}else{
 			echo "Pasahitza desegokia";

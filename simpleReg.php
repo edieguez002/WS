@@ -32,9 +32,10 @@ function bidaliPasahitza(){
 }
 
 	var pasahitza= document.getElementById("Pasahitza").value;
+	var pasahitza2= document.getElementById("Pasahitza2").value;
 	XMLHttpRequestObject.open("POST", "egiaztatuPasAJAX.php", true);
 	XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	XMLHttpRequestObject.send("&Pasahitza="+pasahitza);
+	XMLHttpRequestObject.send("&Pasahitza="+pasahitza+"&Pasahitza2="+pasahitza2);
 }
 </script>
 </head>
@@ -45,7 +46,11 @@ Eposta(*):<br>
 <br><br>
 
 Pasahitza(*):<br>
-<input type="password" id="Pasahitza" name="Pasahitza" onchange="bidaliPasahitza()">
+<input type="password" id="Pasahitza" name="Pasahitza">
+<br><br>
+
+Berridatzi Pasahitza(*):<br>
+<input type="password" id="Pasahitza2" name="Pasahitza2" onchange="bidaliPasahitza()">
 <br><br>
 
 <input type="submit" id="submit" value="submit"/>
