@@ -41,6 +41,12 @@ XMLHttpRequestObject = new XMLHttpRequest();
 }
 
 </script>
+<script type="text/javascript">
+function hasieraraBueltatu(){
+	window.location="layout.html";
+}
+
+</script>
 </head>
 <body>
 <h1>Gehitu galdera: </h1>
@@ -63,7 +69,7 @@ Zailtasun-maila:<br>
 <div id="galderakBistaratu">
 <p> </p>
 </div>
-<button onclick="history.back()">Atzera</button>
+<button onclick="hasieraraBueltatu()">Atzera</button>
 
 
 

@@ -69,12 +69,12 @@ else{
 					mysql_close($conn);
 					session_start();
 					$_SESSION["Eposta"]= $Eposta;
+					echo "Erabiltzaile egokia!";
+					echo "<br><br>";
 					if(filter_var($Eposta, FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$regexp3)))){
 						echo "<p> <a href='adminQuestions.php'> Galderen kudeaketa </a>";
 						break;
 					}
-					echo "<p> <a href='InsertQuestion.php'> Galdetegia </a>";
-					echo "<br><br>";
 					echo "<p> <a href='handlingQuizzes.php'> Galdetegi Berria </a>";
 					break;
 				}

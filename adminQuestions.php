@@ -22,6 +22,12 @@ function galderaEditatu(){
 	XMLHttpRequestObject.send("&select="+mota+"&galdera"+galderaID+"&erantzuna="+erantzunBerria+"&zailtasuna="+zailtasunBerria);
 }
 </script>
+<script type="text/javascript">
+function back(){
+	window.location="layout.html";
+}
+
+</script>
 </head>
 <body>
 <?php
@@ -56,13 +62,15 @@ $conn=mysql_connect("localhost", "root", "");
 		 
 		echo "</table>";
 		
-		//Formularioa sortzen da irakasleak nahi duen galderaren atributu baten balioa aldatzeko.
+		//Formularioa sortzen da irakasleak nahi duen galderaren atributu bat(zu)en balioa aldatzeko.
 		echo "<br><br>";
 		echo "<center>";
-		echo "<form>";
+?>
+		<form action="galderaEditatu.php" method="post">
+<?php
 		echo "Zein galdera aldatu nahi duzu?";
 		echo "<br><br>";
-		echo "<select id=\"select\">";
+		echo "<select id=\"selectah\" name=\"selectah\">";
 		
 		$emaitza1= mysql_query("SELECT * FROM galderak");
 		while ($row = mysql_fetch_assoc($emaitza1)){
@@ -74,17 +82,17 @@ $conn=mysql_connect("localhost", "root", "");
 		**********BALIO BERRIAK**********
 		<br><br>
 		Galdera: 
-		<input type="text" id="galdera" >
+		<input type="text" id="galdera" name="galdera"/>
 		<br>
 		Erantzuna:
-		<input type="text" id="erantzuna" >
+		<input type="text" id="erantzuna" name="erantzuna"/>
 		<br>
 		
 		Zailtasuna: 
-		<input type="text" id="zailtasuna" >
+		<input type="text" id="zailtasuna" name="zailtasuna"/>
 		<br><br>
-		<input type="submit" id="gorde" value="Gorde" onclick="galderaEditatu()">
-		<input type="button" id="atzera" value="Atzera" onclick="back()">
+		<input type="submit" id="gorde" value="Gorde" onclick="galderaEditatu.php"/>
+		<input type="button" id="atzera" value="Atzera" onclick="back()"/>
 	</form>
 
 <div id="result">
