@@ -24,7 +24,7 @@ function galderaEditatu(){
 </script>
 <script type="text/javascript">
 function back(){
-	window.location="layout.html";
+	window.location="layoutTeacher.html";
 }
 
 </script>
@@ -32,13 +32,13 @@ function back(){
 <body>
 <?php
 
-$conn=mysql_connect("localhost", "root", "");
+$conn=mysql_connect("mysql.hostinger.es", "u803652676_aieko", "enetor");
 
 		if (!$conn) {
 			die("Konexio errorea egon da: " . mysql_connect_error());
 		}
 	
-		mysql_select_db("quiz") or die(mysql_error());
+		mysql_select_db("u803652676_quiz") or die(mysql_error());
 		session_start();
 		$ErabPosta= $_SESSION["Eposta"];
 		$emaitza= mysql_query("SELECT * FROM galderak"); 

@@ -43,7 +43,7 @@ XMLHttpRequestObject = new XMLHttpRequest();
 </script>
 <script type="text/javascript">
 function hasieraraBueltatu(){
-	window.location="layout.html";
+	window.location="layoutStudent.html";
 }
 
 </script>
