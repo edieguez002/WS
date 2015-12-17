@@ -14,7 +14,7 @@
 		   href='stylesPWS/smartphone.css' />
 		   
 	<script>
-		function ZenbatGaldera(){
+		function AsmatutakoGalderak(){
 	XMLHttpRequestObject = new XMLHttpRequest();
 	
 	XMLHttpRequestObject.onreadystatechange=function(){
@@ -24,7 +24,7 @@
 }
 
 	
-	XMLHttpRequestObject.open("POST", "galderaKopurua.php", false);
+	XMLHttpRequestObject.open("POST", "AsmatutakoakErratutakoak.php", false);
 	XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	XMLHttpRequestObject.send();
 }
@@ -37,15 +37,12 @@
 	<h2>Quiz: crazy questions</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
-		<span><a href='layoutStudent.html'>Home</a></span>
-		<span><a href='quizzes.php'>Quizzes</a></span>
+		<span><a href='layoutAnonymous.html'>Home</a></span>
+		<span><a href='AnswerQuestions.php'>How much do you know?Try</a></span>
 		<span><a href='credits.html'>Credits</a></span>
 		<span><a href='signUp.html'>Sign up</a></span>
-		<span><a href='handlingQuizzes.php'>Handling questions</a></span>
-		<span><a href='AnswerQuestions.php'>How much do you know? Try me!</a></span>
-		<span><a onclick='ZenbatGaldera()'>Galdera Kopurua</a></span>
+		<span><a onclick='AsmatutakoGalderak()'>Asmatutakoak/Erratutakoak</a></span>
 		<div id="result"></div>
-
 	</nav>
     <section class="main" id="s1">
     

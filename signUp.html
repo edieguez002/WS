@@ -110,10 +110,52 @@ function balioakEgiaztatu(){
 	return true;
 }
 </script>
+
+<script type="text/javascript">
+function atzera()
+{
+	window.location="layout.html";
+}
+</script>
+<script type="text/javascript">
+function bidaliEposta(){
+	XMLHttpRequestObject = new XMLHttpRequest();
+	
+	XMLHttpRequestObject.onreadystatechange=function(){
+	if (XMLHttpRequestObject.readyState==4){	 
+		document.getElementById("epostaErantzuna").innerHTML= XMLHttpRequestObject.responseText;
+	}
+}
+
+	var email= document.getElementById("Eposta").value;
+	XMLHttpRequestObject.open("POST", "egiaztatuMatrikulaAJAX.php", true);
+	XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	XMLHttpRequestObject.send("&Eposta="+email);
+}
+</script>
+
+<script type="text/javascript">
+function bidaliPasahitza(){
+	XMLHttpRequestObject = new XMLHttpRequest();
+	
+	XMLHttpRequestObject.onreadystatechange=function(){
+	if (XMLHttpRequestObject.readyState==4){	 
+		document.getElementById("pasahitzaErantzuna").innerHTML= XMLHttpRequestObject.responseText;
+	}
+}
+
+	var pasahitza= document.getElementById("Pasahitza1").value;
+	var pasahitza2= document.getElementById("Pasahitza2").value;
+	XMLHttpRequestObject.open("POST", "egiaztatuPasAJAX.php", true);
+	XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	XMLHttpRequestObject.send("&Pasahitza="+pasahitza+"&Pasahitza2="+pasahitza2);
+}
+</script>
+
 </head>
 <body>
 <h1>Sign up</h1>
-<form id="erregistro" name="erregistro" onsubmit="return balioakEgiaztatu()" action="Erregistratu.php" method="post">
+<form id="erregistro" name="erregistro" onsubmit="return balioakEgiaztatu()" action="Erregistratu.php" method="post" enctype="multipart/form-data">
 
 Izena(*):<br>
 <input type="text" id="Izena" name="Izena">
@@ -122,15 +164,21 @@ Abizena(*):<br>
 <input type="text" id="Abizena" name="Abizena">
 <br><br>
 Eposta(*):<br>
-<input type="text" id="Eposta" name="Eposta" onchange="">
+<input type="text" id="Eposta" name="Eposta" onchange="bidaliEposta()">
+<div id="epostaErantzuna">
+<p> </p>
+</div>
 <br><br>
 
 Pasahitza(*):<br>
 <input type="password" id="Pasahitza1" name="Pasahitza1">
+<div id="pasahitzaErantzuna">
+<p> </p>
+</div>
 <br><br>
 
 Errepikatu Pasahitza(*):<br>
-<input type="password" id="Pasahitza2" name="Pasahitza2">
+<input type="password" id="Pasahitza2" name="Pasahitza2" onchange="bidaliPasahitza()">
 <br><br>
 
 Telefono zenbakia(*):<br>
@@ -147,8 +195,20 @@ Interesa duzun teknologiak:
 <br>
 <textarea name="Teknologiak" id="Teknologiak" cols="30" rows="10"></textarea>
 <br><br>
-<input type="submit" id="submit" value="submit"/>
-<button onclick="history.back()">Atzera</button>
+
+Zure argazkia:
+<input type="file" name="Argazkia" id="Argazkia" accept="image/*" onchange="loadFile(event)">
+<img src="#" id="output" alt="" width="200" height="250"/>
+<script>
+	var loadFile= function(event){
+			var output= document.getElementById('output');
+			output.src= URL.createObjectURL(event.target.files[0]);
+	};
+</script>
+<br><br>
+
+<input type="submit" name="submit" id="submit" value="submit"/>
+<button onclick="atzera()">Atzera</button>
 </form>
 
 </body>

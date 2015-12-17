@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Galderen kudeaketa</title>
+
+<!--galderaren eguneraketa AJAX eta javascript erabilita.-->
 <script type="text/javascript">
 function galderaEditatu(){
 	XMLHttpRequestObject = new XMLHttpRequest();
@@ -22,6 +24,24 @@ function galderaEditatu(){
 	XMLHttpRequestObject.send("&select="+mota+"&galdera"+galderaID+"&erantzuna="+erantzunBerria+"&zailtasuna="+zailtasunBerria);
 }
 </script>
+
+<!--galderaren eguneraketa AJAX eta jQuery erabilita.-->
+<script type="text/javascript">
+function galderaEditatu(f){
+		$(document).ready(function(){
+		
+	$.ajax({
+		
+		type: "POST",
+		url:"galderaEditatu.php",
+		data: "select="+f.selectah.value+"&galdera="+f.galdera.value+"&erantzuna="+f.erantzuna.value+"&zailtasuna="+f.zailtasuna.value,
+		beforeSend: function() { $('#result').html('<div></div>')},
+		success: function(datuak){$('#result').fadeIn().html(datuak);}
+	});
+	});
+}
+</script>
+
 <script type="text/javascript">
 function back(){
 	window.location="layoutTeacher.html";
@@ -35,7 +55,7 @@ function back(){
 $conn=mysql_connect("mysql.hostinger.es", "u803652676_aieko", "enetor");
 
 		if (!$conn) {
-			die("Konexio errorea egon da: " . mysql_connect_error());
+			die("Konexio errorea egon da: " . mysql_connect());
 		}
 	
 		mysql_select_db("u803652676_quiz") or die(mysql_error());
@@ -91,7 +111,7 @@ $conn=mysql_connect("mysql.hostinger.es", "u803652676_aieko", "enetor");
 		Zailtasuna: 
 		<input type="text" id="zailtasuna" name="zailtasuna"/>
 		<br><br>
-		<input type="submit" id="gorde" value="Gorde" onclick="galderaEditatu.php"/>
+		<input type="submit" id="gorde" value="Gorde" onclick="galderaEditatu(this.form)"/>
 		<input type="button" id="atzera" value="Atzera" onclick="back()"/>
 	</form>
 

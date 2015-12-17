@@ -12,7 +12,7 @@ else{
 	$conn=mysql_connect("mysql.hostinger.es", "u803652676_aieko", "enetor");
 
 		if (!$conn) {
-			die("Konexio errorea egon da: " . mysql_connect_error());
+			die("Konexio errorea egon da: " . mysql_connect());
 		}
 	
 		mysql_select_db("u803652676_quiz") or die(mysql_error());

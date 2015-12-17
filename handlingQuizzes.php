@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Galderak Kudeatu</title>
-<script language = "javascript">
-	
-	
-	
-function galderakIkusi(){
+<script type="text/javascript">
+//galderakIkusi() eta galderaGorde() script hauek AJAX eta javascript erabilita eginda daude:
+/*function galderakIkusi(){
 
 	XMLHttpRequestObject = new XMLHttpRequest();
 	
@@ -38,14 +36,43 @@ XMLHttpRequestObject = new XMLHttpRequest();
 	XMLHttpRequestObject.open("POST", "galderaGorde.php", true);
 	XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	XMLHttpRequestObject.send("&Galdera="+gal+"&Erantzuna="+era+"&Zailtasuna="+zai);
-}
-
+}*/
 </script>
+
 <script type="text/javascript">
 function hasieraraBueltatu(){
 	window.location="layoutStudent.html";
 }
+</script>
 
+<!--galderakIkusi() eta galderaGorde() script hauek AJAX eta jQuery erabilita eginda daude:-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+function galderakIkusi(){
+	$(document).ready(function(){
+	$.ajax({
+		url:"galderakIkusi.php",
+		beforeSend: function() { $('#galderakBistaratu').html('<div></div>')},
+		success: function(datuak){$('#galderakBistaratu').fadeIn().html(datuak);}
+	});
+	});
+}
+</script>
+
+<script type="text/javascript">
+function galderaGorde(f){
+	$(document).ready(function(){
+		
+	$.ajax({
+		
+		type: "POST",
+		url:"galderaGorde.php",
+		data: "Galdera="+f.Galdera.value+"&Erantzuna="+f.Erantzuna.value+"&Zailtasuna="+f.Zailtasuna.value,
+		beforeSend: function() { $('#galderakGorde').html('<div></div>')},
+		success: function(datuak){$('#galderakGorde').fadeIn().html(datuak);}
+	});
+	});
+}
 </script>
 </head>
 <body>
@@ -60,7 +87,7 @@ Erantzuna:<br>
 
 Zailtasun-maila:<br>
 <input type="text" id="Zailtasuna" name="Zailtasuna"><br><br>
-<input type="button" id="Gorde" name="Gorde" value="Galdera gorde" onClick="galderaGorde()"/>
+<input type="button" id="Gorde" name="Gorde" value="Galdera gorde" onClick="galderaGorde(this.form)"/>
 <input type="button" id="Ikusi" name="Ikusi" value="Galderak ikusi" onClick="galderakIkusi()"/>
 </form>
 <div id="galderakGorde">

@@ -5,7 +5,7 @@ require_once('/nusoap-0.9.5/lib/nusoap.php');
 require_once('/nusoap-0.9.5/lib/class.wsdlcache.php');
 
 //soapclient motadun objektua sortu.
-$soapclient= new nusoap_client('http://localhost/wsp/lab7/egiaztatuPasahitza.php?wsdl', true);
+$soapclient= new nusoap_client('http://localhost/wsp/lab8/egiaztatuPasahitza.php?wsdl', true);
 
 //Web-Service-n inplementatu dugun funtzioari dei egiten diogu
 		$pasahitza=$_POST['Pasahitza'];
